@@ -85,8 +85,7 @@ public class ChangePageVisitor implements PageVisitor {
 
                           } else {
                                tv.getSeeDetailsPage().createOutputError(tv);
-                               ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getHomepageAuth());
-                               tv.getPageHandler().change(changePageCommand);
+                               tv.setActivePage(tv.getHomepageAuth());
                                tv.getMoviesPage().setMoviesShown(MovieDatabase.getInstance().
                                         filterBanned(tv.getActiveUser()));
                             }
@@ -104,8 +103,6 @@ public class ChangePageVisitor implements PageVisitor {
             }
             default -> {
                 moviesPage.createOutputError(tv);
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getHomepageAuth());
-                tv.getPageHandler().change(changePageCommand);
             }
         }
     }
@@ -198,8 +195,6 @@ public class ChangePageVisitor implements PageVisitor {
                 tv.getPageHandler().clear();
             }
             default -> {
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getMoviesPage());
-                tv.getPageHandler().change(changePageCommand);
                 homepageAuth.createOutputError(tv);
             }
         }

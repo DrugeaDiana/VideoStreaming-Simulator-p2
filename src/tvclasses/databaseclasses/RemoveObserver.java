@@ -5,10 +5,11 @@ import userclasses.Notification;
 import userclasses.User;
 
 public final class RemoveObserver extends Observer{
+    private String name;
 
-    public RemoveObserver(User user, String genre) {
+    public RemoveObserver(User user, String name) {
         this.user = user;
-        this.setGenre(genre);
+        this.name = name;
     }
 
     /**
@@ -20,5 +21,13 @@ public final class RemoveObserver extends Observer{
         notification.setMovieName(movie.getName());
         notification.setMessage("DELETED");
         this.user.getNotifications().add(notification);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

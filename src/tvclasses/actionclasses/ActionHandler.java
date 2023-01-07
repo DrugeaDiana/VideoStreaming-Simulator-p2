@@ -38,9 +38,9 @@ public final class ActionHandler {
                 break;
             case "database":
                 if (actionInput.getFeature().equals("add")) {
-                    databaseActions.addMovie(actionInput.getAddedMovie());
-                } else if (actionInput.getFeature().equals("remove")) {
-                    databaseActions.removeMovie(actionInput.getDeletedMovie());
+                    databaseActions.addMovie(actionInput.getAddedMovie(), tv);
+                } else if (actionInput.getFeature().equals("delete")) {
+                    databaseActions.removeMovie(actionInput.getDeletedMovie(), tv);
                 }
 
         }

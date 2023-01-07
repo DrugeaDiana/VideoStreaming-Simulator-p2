@@ -4,7 +4,9 @@ import inputclasses.UserInput;
 import movieclasses.Genre;
 import movieclasses.Movie;
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"subscribed"})
 public final class User {
     private static final int FREE_PREMIUM_MOVIES = 15;
     private Credentials credentials;
@@ -16,6 +18,8 @@ public final class User {
     private ArrayList<Movie> ratedMovies = new ArrayList<>();
 
     private ArrayList<Notification> notifications = new ArrayList<>();
+
+    private final ArrayList<String> subscribed = new ArrayList<>();
 
     /**
      * Creates a new user based on UserInput data received from input.
@@ -121,5 +125,16 @@ public final class User {
 
         top.sort((o1, o2) -> o2.getNumber() - o1.getNumber());
         return top;
+    }
+
+    public ArrayList<String> getSubscribed() {
+        return subscribed;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "credentials=" + credentials +
+                '}';
     }
 }

@@ -10,9 +10,10 @@ import java.util.List;
 /**
  * Handles the flow of the changing pages + going back through pages
  * by keeping track of the pages the user has been through
+ * Command Design Pattern
  */
 public class PageHandler {
-    private LinkedList<Command> history= new LinkedList<>();
+    private final LinkedList<Command> history= new LinkedList<>();
 
     public void change(Command changePageCommand) {
         history.push(changePageCommand);
@@ -25,13 +26,14 @@ public class PageHandler {
             tv.getActivePage().createOutputError(tv);
             return;
         }
-        Command command = history.pop();
+
+        ChangePageCommand command = (ChangePageCommand) history.pop();
+
         if (command != null) {
             command.undo();
-        } else {
-            tv.getActivePage().createOutputError(tv);
-            return;
         }
+        // tv.getActivePage().createOutputError(tv);
+
     }
 
     public void clear() {

@@ -80,4 +80,11 @@ public final class Credentials {
     public void setBalance(final String balance) {
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        return "Credentials{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

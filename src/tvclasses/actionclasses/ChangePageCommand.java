@@ -5,9 +5,33 @@ import tvclasses.pageclasses.Page;
 
 public class ChangePageCommand implements Command{
 
-    public TV tv;
-    public Page nextPage;
-    public Page oldPage;
+    private TV tv;
+    private Page nextPage;
+    private Page oldPage;
+
+    public TV getTv() {
+        return tv;
+    }
+
+    public Page getNextPage() {
+        return nextPage;
+    }
+
+    public Page getOldPage() {
+        return oldPage;
+    }
+
+    public void setTv(final TV tv) {
+        this.tv = tv;
+    }
+
+    public void setNextPage(final Page nextPage) {
+        this.nextPage = nextPage;
+    }
+
+    public void setOldPage(final Page oldPage) {
+        this.oldPage = oldPage;
+    }
 
     public ChangePageCommand(TV tv, Page page) {
         this.tv = tv;
@@ -21,6 +45,7 @@ public class ChangePageCommand implements Command{
     public void execute() {
         oldPage = tv.getActivePage();
         tv.setActivePage(nextPage);
+
     }
 
     /**
@@ -37,5 +62,7 @@ public class ChangePageCommand implements Command{
         if (tv.getActivePage() == tv.getSeeDetailsPage()) {
             tv.getActivePage().createOutput(tv);
         }
+        //System.out.println(tv.getActivePage());
     }
+
 }

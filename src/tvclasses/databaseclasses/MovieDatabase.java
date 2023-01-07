@@ -38,15 +38,16 @@ public final class MovieDatabase {
     public void addMovie(Movie movie) {
         movies.add(movie);
         for (AddObserver addObserver : addObservers) {
-            if (movie.getGenres().contains(addObserver.getGenre()))
+            if (movie.getGenres().contains(addObserver.getGenre())) {
                 addObserver.update(movie);
+            }
         }
     }
 
     public void deleteMovie(Movie movie) {
         movies.remove(movie);
         for (RemoveObserver removeObserver : removeObservers) {
-            if (movie.getGenres().contains(removeObserver.getGenre()))
+            if (movie.getName().equals(removeObserver.getName()))
                 removeObserver.update(movie);
         }
     }
