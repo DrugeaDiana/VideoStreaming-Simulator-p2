@@ -81,10 +81,4 @@ public final class Credentials {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return "Credentials{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

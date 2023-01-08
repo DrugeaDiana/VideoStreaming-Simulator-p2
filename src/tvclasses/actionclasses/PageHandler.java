@@ -1,11 +1,8 @@
 package tvclasses.actionclasses;
 
 import tvclasses.TV;
-import tvclasses.pageclasses.Page;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+
 
 /**
  * Handles the flow of the changing pages + going back through pages
@@ -13,15 +10,23 @@ import java.util.List;
  * Command Design Pattern
  */
 public class PageHandler {
-    private final LinkedList<Command> history= new LinkedList<>();
+    private final LinkedList<Command> history = new LinkedList<>();
 
-    public void change(Command changePageCommand) {
+    /**
+     * Executes a new change page command.
+     * @param changePageCommand the command to be executed
+     */
+    public void change(final Command changePageCommand) {
         history.push(changePageCommand);
         changePageCommand.execute();
 
     }
 
-    public void undo(TV tv) {
+    /**
+     * Undoes the change page command that was last used
+     * @param tv main variable
+     */
+    public void undo(final TV tv) {
         if (history.isEmpty()) {
             tv.getActivePage().createOutputError(tv);
             return;
@@ -32,10 +37,11 @@ public class PageHandler {
         if (command != null) {
             command.undo();
         }
-        // tv.getActivePage().createOutputError(tv);
-
     }
 
+    /**
+     * Clears up the history of pages visited.
+     */
     public void clear() {
         history.clear();
     }

@@ -62,17 +62,11 @@ public final class UsersDatabase {
         return null;
     }
 
-    public ArrayList<User> getUsersPurchasedMovie(final Movie movie) {
-        ArrayList<User> movieWatchers = new ArrayList<>();
-        for (final User user : users) {
-            if (user.getPurchasedMovies().contains(movie)) {
-                movieWatchers.add(user);
-            }
-        }
-        return movieWatchers;
-    }
-
-    public void updateUsers(Movie movie) {
+    /**
+     * Deletes the movie given from every user's purchased/watched/liked/rated lists
+     * @param movie the movie which triggers the update
+     */
+    public void updateUsers(final Movie movie) {
         for (final User user : users) {
             if (user.getPurchasedMovies().contains(movie)) {
                 if (user.getCredentials().getAccountType().equals("premium")) {

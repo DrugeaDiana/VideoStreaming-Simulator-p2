@@ -104,6 +104,11 @@ public final class TV {
         }
     }
 
+    /**
+     * Parses through all the information to give a recommended movie for the premium
+     * user that's logged in at the end of the main loop.
+     * @return the recommended movie for the user
+     */
     public Movie getRecommendation() {
         ArrayList<Genre> top = activeUser.createTop();
         ArrayList<Movie> movies = MovieDatabase.getInstance().filterUnseen(activeUser);

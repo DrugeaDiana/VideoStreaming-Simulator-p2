@@ -92,15 +92,17 @@ public final class User {
         this.ratedMovies = ratedMovies;
     }
 
-
     public ArrayList<Notification> getNotifications() {
         return notifications;
     }
 
-    public void setNotifications(ArrayList<Notification> notifications) {
+    public void setNotifications(final ArrayList<Notification> notifications) {
         this.notifications = notifications;
     }
 
+    /**
+     * @return the top of the genres they like
+     */
     public ArrayList<Genre> createTop() {
         ArrayList<Genre> top = new ArrayList<>();
         ArrayList<String> genreNames = new ArrayList<>();
@@ -131,10 +133,4 @@ public final class User {
         return subscribed;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "credentials=" + credentials +
-                '}';
-    }
 }

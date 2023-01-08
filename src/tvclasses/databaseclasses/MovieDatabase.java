@@ -1,7 +1,6 @@
 package tvclasses.databaseclasses;
 
 import inputclasses.ContainsInput;
-import inputclasses.MovieInput;
 import inputclasses.SortingInput;
 import movieclasses.Movie;
 import userclasses.User;
@@ -35,7 +34,11 @@ public final class MovieDatabase {
         this.movies = movies;
     }
 
-    public void addMovie(Movie movie) {
+    /**
+     * Adds a new movie to the database and updates every AddObserver
+     * @param movie new movie
+     */
+    public void addMovie(final Movie movie) {
         movies.add(movie);
         for (AddObserver addObserver : addObservers) {
             if (movie.getGenres().contains(addObserver.getGenre())) {
@@ -44,11 +47,16 @@ public final class MovieDatabase {
         }
     }
 
-    public void deleteMovie(Movie movie) {
+    /**
+     * Deletes the specified movie and updates the RemoveObservers
+     * @param movie movie to be deleted
+     */
+    public void deleteMovie(final Movie movie) {
         movies.remove(movie);
         for (RemoveObserver removeObserver : removeObservers) {
-            if (movie.getName().equals(removeObserver.getName()))
+            if (movie.getName().equals(removeObserver.getName())) {
                 removeObserver.update(movie);
+            }
         }
     }
 
@@ -95,6 +103,10 @@ public final class MovieDatabase {
         return filteredMovies;
     }
 
+    /**
+     * @param user the user we want to get the information about
+     * @return a list of movies they haven't seen yet.
+     */
     public ArrayList<Movie> filterUnseen(final User user) {
         final ArrayList<Movie> filteredMovies = filterBanned(user);
         filteredMovies.removeIf(movie -> user.getWatchedMovies().contains(movie));
@@ -174,7 +186,7 @@ public final class MovieDatabase {
         return addObservers;
     }
 
-    public void setAddObservers(ArrayList<AddObserver> addObservers) {
+    public void setAddObservers(final ArrayList<AddObserver> addObservers) {
         this.addObservers = addObservers;
     }
 
@@ -182,7 +194,7 @@ public final class MovieDatabase {
         return removeObservers;
     }
 
-    public void setRemoveObservers(ArrayList<RemoveObserver> removeObservers) {
+    public void setRemoveObservers(final ArrayList<RemoveObserver> removeObservers) {
         this.removeObservers = removeObservers;
     }
 }

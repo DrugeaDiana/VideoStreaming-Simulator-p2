@@ -10,6 +10,9 @@ import userclasses.User;
 public abstract class Observer {
     protected User user;
 
+    /**
+     * @param movie the movie which triggered the update
+     */
     public abstract void update(Movie movie);
 
 }

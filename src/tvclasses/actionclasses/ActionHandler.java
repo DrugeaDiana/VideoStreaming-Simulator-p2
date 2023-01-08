@@ -42,7 +42,9 @@ public final class ActionHandler {
                 } else if (actionInput.getFeature().equals("delete")) {
                     databaseActions.removeMovie(actionInput.getDeletedMovie(), tv);
                 }
-
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + actionInput.getType());
         }
     }
 }

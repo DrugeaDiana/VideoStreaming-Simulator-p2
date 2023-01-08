@@ -4,7 +4,7 @@ public final class Genre {
     private String name;
     private int number = 0;
 
-    public Genre(String name) {
+    public Genre(final String name) {
         this.name = name;
     }
 
@@ -12,7 +12,7 @@ public final class Genre {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(final int number) {
         this.number = number;
     }
 
@@ -20,7 +20,7 @@ public final class Genre {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 }

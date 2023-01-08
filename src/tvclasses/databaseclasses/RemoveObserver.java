@@ -4,22 +4,31 @@ import movieclasses.Movie;
 import userclasses.Notification;
 import userclasses.User;
 
-public final class RemoveObserver extends Observer{
+/**
+ * Observer pattern
+ */
+public final class RemoveObserver extends Observer {
     private String name;
 
-    public RemoveObserver(User user, String name) {
+    public RemoveObserver(final User user, final String name) {
         this.user = user;
         this.name = name;
     }
 
     /**
-     * @param movie
+     * @param movie the movie that triggered the update
      */
     @Override
-    public void update(Movie movie) {
+    public void update(final Movie movie) {
         Notification notification = new Notification();
         notification.setMovieName(movie.getName());
         notification.setMessage("DELETED");
+        for (Notification notification1 : this.user.getNotifications()) {
+            if (notification1.getMessage().equals(notification.getMessage())
+                    && notification1.getMovieName().equals(notification.getMovieName())) {
+                return;
+            }
+        }
         this.user.getNotifications().add(notification);
     }
 
@@ -27,7 +36,7 @@ public final class RemoveObserver extends Observer{
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 }

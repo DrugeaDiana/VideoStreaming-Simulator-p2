@@ -149,7 +149,8 @@ public class OnPageVisitor implements PageVisitor {
                         tv.getActiveUser().setNumFreePremiumMovies(tv.getActiveUser().
                                 getNumFreePremiumMovies() - 1);
                         tv.getActiveUser().getPurchasedMovies().add(auxMovie);
-                        RemoveObserver removeObserver = new RemoveObserver(tv.getActiveUser(), auxMovie.getName());
+                        RemoveObserver removeObserver =
+                                new RemoveObserver(tv.getActiveUser(), auxMovie.getName());
                         MovieDatabase.getInstance().getRemoveObservers().add(removeObserver);
                         seeDetailsPage.createOutput(tv);
                     } else {
@@ -248,9 +249,9 @@ public class OnPageVisitor implements PageVisitor {
                 if (!auxMovie.getGenres().contains(genre)) {
                     seeDetailsPage.createOutputError(tv);
                 } else {
-                    if (tv.getActiveUser().getSubscribed().contains(genre))
+                    if (tv.getActiveUser().getSubscribed().contains(genre)) {
                         seeDetailsPage.createOutputError(tv);
-                    else {
+                    } else {
                         AddObserver addObserver = new AddObserver(tv.getActiveUser(), genre);
 
                         MovieDatabase.getInstance().getAddObservers().add(addObserver);

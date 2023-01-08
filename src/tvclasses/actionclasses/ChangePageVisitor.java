@@ -60,7 +60,8 @@ public class ChangePageVisitor implements PageVisitor {
         final String page = actionInput.getPage();
         switch (page) {
             case "homepage" -> {
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getHomepageAuth());
+                ChangePageCommand changePageCommand =
+                        new ChangePageCommand(tv, tv.getHomepageAuth());
                 tv.getPageHandler().change(changePageCommand);
             }
             case "see details" -> {
@@ -73,7 +74,8 @@ public class ChangePageVisitor implements PageVisitor {
                         if (moviesPage.getMoviesShown().contains(movie)) {
                             moviesDetails.add(movie);
                             tv.getSeeDetailsPage().setMoviesShown(moviesDetails);
-                            ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getSeeDetailsPage());
+                            ChangePageCommand changePageCommand =
+                                    new ChangePageCommand(tv, tv.getSeeDetailsPage());
                             tv.getPageHandler().change(changePageCommand);
                             tv.getSeeDetailsPage().createOutput(tv);
                         } else {
@@ -129,7 +131,8 @@ public class ChangePageVisitor implements PageVisitor {
                 tv.getMoviesPage().createOutput(tv);
             }
             case "upgrades" -> {
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getUpgradesPage());
+                ChangePageCommand changePageCommand =
+                        new ChangePageCommand(tv, tv.getUpgradesPage());
                 tv.getPageHandler().change(changePageCommand);
             }
             case "logout" -> {
@@ -181,12 +184,14 @@ public class ChangePageVisitor implements PageVisitor {
             case "movies" -> {
                 tv.getMoviesPage().setMoviesShown(MovieDatabase.getInstance().
                         filterBanned(tv.getActiveUser()));
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getMoviesPage());
+                ChangePageCommand changePageCommand =
+                        new ChangePageCommand(tv, tv.getMoviesPage());
                 tv.getPageHandler().change(changePageCommand);
                 tv.getMoviesPage().createOutput(tv);
             }
             case "upgrades" -> {
-                ChangePageCommand changePageCommand = new ChangePageCommand(tv, tv.getUpgradesPage());
+                ChangePageCommand changePageCommand =
+                        new ChangePageCommand(tv, tv.getUpgradesPage());
                 tv.getPageHandler().change(changePageCommand);
             }
             case "logout" -> {

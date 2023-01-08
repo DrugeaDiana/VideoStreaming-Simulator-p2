@@ -3,7 +3,11 @@ package tvclasses.actionclasses;
 import tvclasses.TV;
 import tvclasses.pageclasses.Page;
 
-public class ChangePageCommand implements Command{
+
+/**
+ * Command Design Pattern (part of it)
+ */
+public final class ChangePageCommand implements Command {
 
     private TV tv;
     private Page nextPage;
@@ -33,13 +37,13 @@ public class ChangePageCommand implements Command{
         this.oldPage = oldPage;
     }
 
-    public ChangePageCommand(TV tv, Page page) {
+    public ChangePageCommand(final TV tv, final Page page) {
         this.tv = tv;
         this.nextPage = page;
     }
 
     /**
-     *
+     * Changes the active page during a change page command
      */
     @Override
     public void execute() {
@@ -49,7 +53,7 @@ public class ChangePageCommand implements Command{
     }
 
     /**
-     *
+     * Returns to the last page the user visited
      */
     @Override
     public void undo() {
@@ -62,7 +66,5 @@ public class ChangePageCommand implements Command{
         if (tv.getActivePage() == tv.getSeeDetailsPage()) {
             tv.getActivePage().createOutput(tv);
         }
-        //System.out.println(tv.getActivePage());
     }
-
 }
